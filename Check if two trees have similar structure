@@ -1,0 +1,54 @@
+class binaryTree:
+    def __init__(self, nodeData, left=None, right=None):
+        self.nodeData = nodeData
+        self.left = left
+        self.right = right
+
+    def __str__(self):
+        return str(self.nodeData)
+
+
+def isLeaf(tree):
+    return tree.left is None and tree.right is None
+
+
+def isSimilar(treeOne, treeTwo):
+    if treeOne is None and treeTwo is None:
+        return True
+
+    if treeOne is None or treeTwo is None:
+        return False
+
+    return isSimilar(treeOne.left, treeTwo.left) and isSimilar(treeOne.right, treeTwo.right)
+
+
+root = binaryTree(1)
+BranchOne = binaryTree(2)
+BranchTwo = binaryTree(3)
+root.left = BranchOne
+root.right = BranchTwo
+LeafThree = binaryTree(4)
+LeafFour = binaryTree(5)
+LeafFive = binaryTree(6)
+LeafSix = binaryTree(7)
+BranchOne.left = LeafThree
+BranchOne.right = LeafFour
+BranchTwo.left = LeafFive
+BranchTwo.right = LeafSix
+
+rootTwo = binaryTree(8)
+BranchA = binaryTree(9)
+BranchB = binaryTree(10)
+rootTwo.left = BranchA
+rootTwo.right = BranchB
+LeafA = binaryTree(11)
+LeafB = binaryTree(12)
+LeafC = binaryTree(13)
+LeafD = binaryTree(14)
+BranchA.left = LeafA
+BranchA.right = LeafB
+BranchB.left = LeafC
+BranchB.right = LeafD
+
+a = isSimilar(root, rootTwo)
+print(a)
