@@ -1,0 +1,31 @@
+class binaryTree:
+    def __init__(self, nodeData, left=None, right=None):
+        self.nodeData = nodeData
+        self.left = left
+        self.right = right
+
+    def __str__(self):
+        return str(self.nodeData)
+
+
+def SumPreOrder(tree):
+    if tree is None:
+        return 0
+    return tree.nodeData + SumPreOrder(tree.left) + SumPreOrder(tree.right)
+
+
+root = binaryTree(1)
+BranchOne = binaryTree(2)
+BranchTwo = binaryTree(3)
+root.left = BranchOne
+root.right = BranchTwo
+LeafThree = binaryTree(4)
+LeafFour = binaryTree(5)
+LeafFive = binaryTree(6)
+LeafSix = binaryTree(7)
+BranchOne.left = LeafThree
+BranchOne.right = LeafFour
+BranchTwo.left = LeafFive
+BranchTwo.right = LeafSix
+
+print(SumPreOrder(root))
