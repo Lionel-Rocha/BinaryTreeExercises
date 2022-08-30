@@ -1,0 +1,61 @@
+class binaryTree:
+    def __init__(self, nodeData, left=None, right=None):
+        self.nodeData = nodeData
+        self.left = left
+        self.right = right
+
+    def __str__(self):
+        return str(self.nodeData)
+
+
+def PostOrder(tree):
+    if tree.left is not None:
+        PostOrder(tree.left)
+    if tree.right is not None:
+        PostOrder(tree.right)
+    print(tree.nodeData)
+
+
+def preOrder(tree):
+    # PreOrder: root, left, right
+    if tree.nodeData is not None:
+        print(tree.nodeData)
+
+    if tree.left is not None:
+        preOrder(tree.left)
+
+    if tree.right is not None:
+        preOrder(tree.right)
+
+
+def inOrder(tree):
+    if tree.left is not None:
+        inOrder(tree.left)
+    if tree.nodeData is not None:
+        print(tree.nodeData)
+    if tree.right is not None:
+        inOrder(tree.right)
+
+
+root = binaryTree("Root")
+BranchOne = binaryTree("Branch 1")
+BranchTwo = binaryTree("Branch 2")
+root.left = BranchOne
+root.right = BranchTwo
+LeafThree = binaryTree("Leaf 3")
+LeafFour = binaryTree("Leaf 4")
+LeafFive = binaryTree("Leaf 5")
+LeafSix = binaryTree("Leaf 6")
+BranchOne.left = LeafThree
+BranchOne.right = LeafFour
+BranchTwo.left = LeafFive
+BranchTwo.right = LeafSix
+
+print("Post-order: left, right, root. ")
+PostOrder(root)
+print()
+print("Pre-order: root, left, right. ")
+preOrder(root)
+print()
+print("In order: left, root, right. ")
+inOrder(root)
